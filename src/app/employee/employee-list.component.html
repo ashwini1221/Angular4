@@ -1,0 +1,34 @@
+  <h1> Employee List</h1>
+  
+<table>
+<tr>
+ <th> Emp Id </th>
+ <th> Full Name </th>
+ <th>Age </th>
+ <th> Gender </th>
+ <th> Salary </th>
+ <th> City </th>
+ <th> State </th>
+ <th> Zipcode </th>
+ <th></th>
+</tr>
+<tbody>
+ <tr *ngFor = "let emp of employees">
+  <td [ngStyle]= "{'background-color':emp.newEmp?'red':'','color':emp.newEmp?'white':''}">{{emp.id}} </td>
+  <td [ngClass]="{'new': emp.newEmp}">{{emp.fname+" "+emp.mname+" "+emp.lname}}</td>
+  <td>{{emp.age}}</td>
+  <td>{{getGender(emp.gender)}}</td>
+  <td>{{emp.salary}}</td>
+  <td>{{emp.address.city}}</td>
+  <td>{{emp.address.state}}</td>
+  <td>{{emp.address.zipcode}}</td>
+  
+  <td>
+    <button class="btn btn-primary btn-sm" type="button" (click)="handleEdit(emp.id)">Edit</button>
+    <button class="btn btn-danger btn-sm" type="button" (click)="handleDelete(emp.id)">Delete</button>    
+</td>  
+</tr></tbody>
+  </table><br/>
+    <button type="button" (click)="routeMetoAddPage()">Add new Employee</button>
+
+

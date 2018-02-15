@@ -1,0 +1,28 @@
+<h1>Course List</h1>
+<table>
+    <tr>
+     <th> Course Id </th>
+     <th> Course Name </th>
+     <th> Skill Level </th>
+     <th>Duration</th>
+     <th> Fee </th>
+    </tr>
+    <tbody>
+     <tr *ngFor="let course of courses">
+      <td>{{course.id}} </td>
+      <td>{{course.coursename}}</td>
+      <td>{{course.skillLevel}}</td>
+      <td>{{course.duration}}</td>
+      <td>{{course.fee}}</td>
+      <td>
+        <button class="btn btn-primary btn-sm" type="button" 
+                    (click)="handleEdit(course.id)">Edit</button>
+        <button class="btn btn-primary btn-sm" type="button" 
+                    (click)="handleDelete(course.id)">Delete</button>
+        
+      </td>
+      </tr>
+      </table><br/>
+      <button type="button" (click)="routeMetoAddPage()" class="btn btn-primary">Add New Course</button>
+      
+    

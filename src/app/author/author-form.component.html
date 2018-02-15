@@ -1,0 +1,37 @@
+
+<h1>Author Form</h1>
+<div class="container">
+    <form #authorForm="ngForm" (submit)="addAuthor(authorForm)">
+       <div class="form-group">
+         <label for="fname">First Name:</label>
+         <input  type="text" class="form-control" placeholder="Enter fname" name="fname" 
+                     ngModel required  #firstName="ngModel" minlength="5" >
+           <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+              <div *ngIf="firstName.errors.minlength">First Name should be minimum 5 characters</div>
+            </div>      
+      </div><br/>        
+
+       <div class="form-group">
+         <label for="lname">Last Name:</label>
+         <input required type="text" class="form-control" placeholder="Enter lname" name="lname" 
+                        ngModel  #lastName="ngModel">
+            <div *ngIf="lastName.touched">
+                <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid" >
+                  <div *ngIf="lastName.errors.required">Please Enter Last Name</div>                        
+                </div>
+            </div>
+       </div><br/>
+       <div class="form-group">
+          <label class="radio-inline" *ngFor="let g of getKeys()">
+            <input type="radio" name="gender" [(ngModel)]="author.gender" [value]="g">{{g}}
+          </label>
+         </div><br/>
+
+       <div class="form-group">
+           <label for="age">Age:</label>
+           <input type="age" class="form-control" id="age" placeholder="Enter age" name="age" 
+                               ngModel>
+         </div><br/>          
+      <button class="btn btn-primary"  type="submit" [disabled]="authorForm.invalid">Submit</button>
+     </form>
+   </div> 
